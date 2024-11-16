@@ -88,7 +88,7 @@
                 <a href="" class="user_link">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </a>
-                <a class="cart_link" href="#">
+                <a class="cart_link" href="cart.html">
                   <svg
                     version="1.1"
                     id="Capa_1"
@@ -195,7 +195,12 @@
                     </p>
                     <div class="options">
                       <h6>$75</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 1,
+                          name: 'Burgur set',
+                          price: 75,
+                          image: 'burgur.jpeg'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -274,7 +279,12 @@
                     </p>
                     <div class="options">
                       <h6>$20</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 2,
+                          name: 'Classic Chicken Burgur',
+                          price: 20,
+                          image: 'f8.png'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -353,7 +363,12 @@
                     </p>
                     <div class="options">
                       <h6>$18</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 3,
+                          name: 'Cheese beef Burgur',
+                          price: 18,
+                          image: 'f2.png'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -433,7 +448,12 @@
                     </p>
                     <div class="options">
                       <h6>$15</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 4,
+                          name: 'Classic Sandwitch',
+                          price: 15,
+                          image: 'sand2.jpeg'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -513,7 +533,12 @@
                     </p>
                     <div class="options">
                       <h6>$18</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 5,
+                          name: 'Chicken Sandwitch',
+                          price: 18,
+                          image: 'sand1.webp'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -593,7 +618,12 @@
                     </p>
                     <div class="options">
                       <h6>$18</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 6,
+                          name: 'Parmesan Cheese Sandwitch',
+                          price: 18,
+                          image: 'sand3.png'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -673,7 +703,12 @@
                     </p>
                     <div class="options">
                       <h6>$12</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 7,
+                          name: 'Pumpkin Soup',
+                          price: 12,
+                          image: 'soup1.jpeg'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -753,7 +788,12 @@
                     </p>
                     <div class="options">
                       <h6>$12</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 8,
+                          name: 'Tomato Soup',
+                          price: 12,
+                          image: 'soup2.jpeg'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -833,7 +873,12 @@
                     </p>
                     <div class="options">
                       <h6>$14</h6>
-                      <a href="">
+                      <a href="javascript:void(0)" onclick="addToCart({
+                          id: 9,
+                          name: 'Cauliflower Soup',
+                          price: 14,
+                          image: 'soup3.jpeg'
+                      })">
                         <svg
                           version="1.1"
                           id="Capa_1"
@@ -871,7 +916,6 @@
                               />
                             </g>
                           </g>
-                          <g></g>
                           <g></g>
                           <g></g>
                           <g></g>
@@ -987,5 +1031,34 @@
     <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
     <!-- End Google Map -->
+    <script src="js/ShoppingCart.js"></script>
+    <script>
+        // Initialize shopping cart
+        const cart = new ShoppingCart();
+
+        // Function to add item to cart
+        function addToCart(item) {
+            cart.addItem(item);
+            
+            // Show success message
+            alert('Item added to cart!');
+            
+            // Optional: Update cart icon or counter
+            updateCartCounter();
+        }
+
+        // Function to update cart counter (optional)
+        function updateCartCounter() {
+            const cartItems = cart.getItems();
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            // If you have a cart counter element, update it here
+            // document.getElementById('cartCounter').textContent = totalItems;
+        }
+
+        // Initialize cart counter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCounter();
+        });
+    </script>
   </body>
 </html>
